@@ -20,6 +20,8 @@ parser.add_argument('flist',
                     help='Name of the flist to process (e.g. tr05_simu)')
 parser.add_argument('chime_dir',
                     help='Base directory of the CHiME challenge.')
+parser.add_argument('sim_dir',
+                    help='Base directory of the CHiME challenge simulated data.')
 parser.add_argument('output_dir',
                     help='The directory where the enhanced wav files will '
                          'be stored.')
@@ -50,7 +52,7 @@ scenario = args.flist.split('_')[-1]
 
 # CHiME data handling
 if scenario == 'simu':
-    flist = gen_flist_simu(args.chime_dir, stage)
+    flist = gen_flist_simu(args.chime_dir, args.sim_dir, stage)
 elif scenario == 'real':
     flist = gen_flist_real(args.chime_dir, stage)
 else:
